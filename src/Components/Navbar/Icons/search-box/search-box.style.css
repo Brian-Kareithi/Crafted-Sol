@@ -1,60 +1,54 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .container {
-    position: relative;
-    height: 90vh;
-    display: flex;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 .container .searchbox {
-    position: relative;
-    display: block;
-    width: 100%;
-    max-width: 53px;
-    transition: 0.4s linear;
-    overflow: hidden;
-
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 40px;
+  transition: 0.4s linear;
+  overflow: hidden;
 }
 .container .searchbox .searchbox__input {
-    display: block;
-    appearance: none;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 50px;
-    background-color: #080707;
-    padding: 15px;
-    color: #080707;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.4s linear;
+  display: block;
+  appearance: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  background-color: #080707;
+  padding: 10px 15px;
+  color: #080707;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.4s linear;
 }
 .container .searchbox .searchbox__input::placeholder {
-    color: #24233A;
+  color: #24233A;
 }
 .container .searchbox .searchbox__icon {
-    position: absolute;
-    right: calc(53px / 2);
-    top: 2.7%;
-    transform: translate(50%, -50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
+  position: absolute;
+  right: calc(40px / 2);
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
 }
 .container .searchbox .searchbox__icon path {
-    fill: #FFFFFF;
-    transition: 0.4s linear;
+  fill: #FFFFFF;
+  transition: 0.4s linear;
 }
 .container .searchbox:focus-within {
-    max-width: 300px;
+  max-width: 200px;
 }
 .container .searchbox:focus-within .searchbox__input {
-    background-color: #FFF;
-    padding-right: 50px;
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+  background-color: #FFF;
+  padding-right: 40px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 .container .searchbox:focus-within .searchbox__icon path {
-    fill: #24233A;
+  fill: #24233A;
 }
