@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./card-list.component";
+import { useApp } from "../../../Context/AppContext";
 
 const Fetcher = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { isInWishlist, toggleWishlist } = useApp();
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -21,7 +23,12 @@ const Fetcher = () => {
         <h2>Featured Products</h2>
         <p>Handpicked just for you</p>
       </div>
-      <CardList products={products} loading={loading} />
+      <CardList
+        products={products}
+        loading={loading}
+        isInWishlist={isInWishlist}
+        onToggleLike={toggleWishlist}
+      />
     </section>
   );
 };

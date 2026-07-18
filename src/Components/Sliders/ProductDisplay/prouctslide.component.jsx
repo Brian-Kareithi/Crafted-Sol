@@ -62,6 +62,7 @@ const Productslide = () => {
               <img
                 key={index}
                 alt={`Product ${index + 1}`}
+                loading="lazy"
                 className={`gallery__thumb ${selectedImageIndex === index ? 'gallery__thumb--active' : ''}`}
                 src={image}
                 onClick={() => handleImageClick(index)}

@@ -27,7 +27,7 @@ const responsive = {
 
 class CardList extends Component {
   render() {
-    const { products, loading } = this.props;
+    const { products, loading, isInWishlist, onToggleLike } = this.props;
 
     if (loading) {
       return (
@@ -45,7 +45,13 @@ class CardList extends Component {
       <div className='card-list'>
         <Carousel responsive={responsive} infinite autoPlay autoPlaySpeed={4000} keyBoardControl>
           {products.map((product) => (
-            <Card key={product.id} products={product} />
+            <Card
+              key={product.id}
+              products={product}
+              product={product}
+              isLiked={isInWishlist(product.id)}
+              onToggleLike={onToggleLike}
+            />
           ))}
         </Carousel>
       </div>

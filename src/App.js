@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import BackgroundSlider from "./Components/Sliders/LandingPage/backgroundslider.component";
 import Navbar from "./Components/Navbar/navbar.component";
-import Homecard01Componenet from "./Components/cards/homepagecard1/homecard01.componenet";
-import Fetcher from "./Components/Sliders/PageCourosel/caurosel1fetch.component";
-import Productslide from "./Components/Sliders/ProductDisplay/prouctslide.component";
+import Home from './Pages/Home';
+import Cart from './Pages/Cart';
+import Wishlist from './Pages/Wishlist';
+import Profile from './Pages/Profile';
+import SplashScreen from './Components/SplashScreen/SplashScreen';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashFinish = useCallback(() => setShowSplash(false), []);
+
   return (
     <div className='App'>
+      {showSplash && <SplashScreen onFinish={handleSplashFinish} />}
       <Navbar />
       <main>
-        <BackgroundSlider />
-        <Homecard01Componenet />
-        <Fetcher />
-        <Productslide />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </main>
       <footer className="footer">
         <div className="footer__inner">
@@ -27,9 +36,9 @@ function App() {
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
               </a>
-              <a href="#" aria-label="Twitter">
+              <a href="#" aria-label="Twitter/X">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                  <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M19.5 4l-6.768 6.768"/>
                 </svg>
               </a>
               <a href="#" aria-label="Facebook">
@@ -41,10 +50,10 @@ function App() {
           </div>
           <div className="footer__col">
             <h4>Quick Links</h4>
-            <a href="#">Men</a>
-            <a href="#">Women</a>
-            <a href="#">Shoes</a>
-            <a href="#">Bags</a>
+            <a href="/">Home</a>
+            <a href="/cart">Cart</a>
+            <a href="/wishlist">Wishlist</a>
+            <a href="/profile">Profile</a>
           </div>
           <div className="footer__col">
             <h4>Customer Care</h4>

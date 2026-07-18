@@ -1,0 +1,368 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  min-height: 60vh;
+}
+
+.page--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  color: #888;
+}
+
+.page--empty h2 {
+  color: #333;
+  margin-top: 8px;
+}
+
+.page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page__header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.page__clear {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #888;
+  transition: all 0.2s;
+}
+
+.page__clear:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* Cart */
+.cart__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.cart__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+.cart__item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.cart__item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart__item-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart__item-price {
+  font-size: 0.85rem;
+  color: #7085B6;
+  font-weight: 600;
+}
+
+.cart__item-qty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+.cart__item-qty button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+  padding: 2px 6px;
+}
+
+.cart__item-qty span {
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cart__item-total {
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 100px;
+  text-align: right;
+  color: #1a1a2e;
+}
+
+.cart__item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  padding: 6px;
+  transition: color 0.2s;
+}
+
+.cart__item-remove:hover {
+  color: #e74c3c;
+}
+
+.cart__summary {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.cart__summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.cart__summary-row--total {
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  padding-top: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.cart__checkout {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  background: #7085B6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.cart__checkout:hover {
+  background: #5a6e9e;
+}
+
+/* Wishlist */
+.wishlist__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.wishlist__card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  position: relative;
+  transition: transform 0.25s;
+}
+
+.wishlist__card:hover {
+  transform: translateY(-3px);
+}
+
+.wishlist__card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.wishlist__card-body {
+  padding: 16px;
+}
+
+.wishlist__card-body h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wishlist__price {
+  font-weight: 700;
+  color: #7085B6;
+  margin-bottom: 12px;
+}
+
+.wishlist__heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+  z-index: 2;
+}
+
+.wishlist__heart:hover {
+  transform: scale(1.1);
+}
+
+.wishlist__add {
+  width: 100%;
+  padding: 10px;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.25s;
+}
+
+.wishlist__add:hover {
+  background: #333;
+}
+
+.wishlist__skeleton {
+  height: 340px;
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+  background-size: 200% 100%;
+  border-radius: 12px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Profile */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.profile__avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #7085B6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.profile__email {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.profile__joined {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.profile__stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.profile__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.profile__stat-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.profile__stat span:last-child {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .cart__item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cart__item-total {
+    min-width: auto;
+  }
+  .cart__summary {
+    max-width: 100%;
+  }
+  .wishlist__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
