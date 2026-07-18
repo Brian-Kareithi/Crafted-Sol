@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import './search-box.style.css'
 
-const Searchbox = () =>
-{
+const Searchbox = () => {
+  const [open, setOpen] = useState(false);
+  const inputRef = useRef(null);
 
-    return(
-        <div className="container">
-            <div className="searchbox">
-                <input type="text" className="searchbox__input" placeholder="Search..." />
-                <svg className="searchbox__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.966 56.966">
-                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17s-17-7.626-17-17S14.61,6,23.984,6z" />
-                </svg>
-            </div>
-        </div>
-    );
-}
+  useEffect(() => {
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
+  return (
+    <div className={`search-wrapper ${open ? 'search-wrapper--open' : ''}`}>
+      <input
+        ref={inputRef}
+        type="text"
+        className="search-wrapper__input"
+        placeholder="Search products..."
+        onBlur={() => {
+          if (!inputRef.current?.value) setOpen(false);
+        }}
+      />
+      <button
+        className="search-wrapper__btn"
+        onClick={() => setOpen(!open)}
+        aria-label="Search"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+  );
+};
 
 export default Searchbox;

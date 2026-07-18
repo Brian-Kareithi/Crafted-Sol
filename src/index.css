@@ -19,6 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #1a1a2e;
   line-height: 1.6;
+  background: #f8f9fc;
 }
 
 img {
@@ -30,6 +31,10 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  font-family: inherit;
 }
 
 .section-header {
@@ -53,6 +58,7 @@ a {
 .products-section {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
 @media (max-width: 768px) {
