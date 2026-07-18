@@ -1,55 +1,80 @@
-.cont01,
-.cont02,
-.cont03 {
-    position: relative;
-    height: 30vh;
-    width: 55vh;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(40,40,40);
-}
-.cont01{
-    background-image: url("clothes.jpg");
-    background-size: contain;
-}
-.cont02{
-    background-image: url("shoes.jpg");
-    background-size: cover;
-}
-.cont03{
-    background-image: url("accesories.jpg");
-    background-size: cover;
-}
-.overlay h1{
-    margin-top: 25%;
+.categories {
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity .5s ease;
-    background: rgba(0, 0, 0, 0.75);
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.categories__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0 16px;
 }
 
-.cont01:hover .overlay,
-.cont02:hover .overlay,
-.cont03:hover .overlay {
-    opacity: 1;
+.categories__card {
+  position: relative;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.section01 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 120px 90px;
-    gap: 5%;
+.categories__card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
 }
-h1{
-    color: #FFFFFF;
+
+.categories__card--clothes {
+  background-image: url("clothes.jpg");
+}
+
+.categories__card--shoes {
+  background-image: url("shoes.jpg");
+}
+
+.categories__card--jewelry {
+  background-image: url("accesories.jpg");
+}
+
+.categories__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  color: #fff;
+}
+
+.categories__card:hover .categories__overlay {
+  opacity: 1;
+}
+
+.categories__overlay h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.categories__overlay span {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .categories__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .categories__card {
+    height: 240px;
+  }
 }

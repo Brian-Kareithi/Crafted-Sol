@@ -1,37 +1,29 @@
-import React,{Component} from "react";
+import React, { useEffect, useState } from "react";
 import CardList from "./card-list.component";
 
-class Fetcher extends Component
-{
+const Fetcher = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    constructor(props)
-    {
-        super(props);
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((items) => {
+        setProducts(items);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
-        this.state =
-            {
-                products:[]
-            }
-
-    }
-    componentDidMount()
-    {
-        fetch('https://fakestoreapi.com/products').then((response)=>response.json())
-            .then((items)=>this.setState(()=>{return{products:items}
-            }) )
-    }
-
-    render()
-    {
-        const {products}=this.state;
-
-        return (
-            <div className='main'>
-                    <CardList products={products}/>
-            </div>
-        );
-    }
-
-}
+  return (
+    <section className="products-section">
+      <div className="section-header">
+        <h2>Featured Products</h2>
+        <p>Handpicked just for you</p>
+      </div>
+      <CardList products={products} loading={loading} />
+    </section>
+  );
+};
 
 export default Fetcher;

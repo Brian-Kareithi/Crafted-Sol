@@ -1,12 +1,16 @@
 # Crafted Sol
 
-A modern e-commerce frontend built with React, featuring:
+A modern e-commerce frontend built with React, designed for the African market with prices in KSh.
 
-- Sticky responsive navbar with mobile hamburger menu
-- Hero slider with auto-rotating background images
-- Category cards (Clothware, Footware, Jewelry)
-- Product carousel with data from FakeStore API
-- Product image gallery with thumbnail navigation
+## Features
+
+- Sticky responsive navbar with mobile hamburger menu & SVG brand logo
+- Hero slider with auto-rotating background images & skeleton loading
+- Category cards (Clothware, Footware, Jewelry) with hover overlay
+- Product carousel from FakeStore API (prices converted to KSh) with skeleton loading
+- Product image gallery with thumbnail navigation & skeleton loading
+- Mobile-first responsive design throughout
+- SVG favicon matching brand identity
 
 ## Quick Start
 

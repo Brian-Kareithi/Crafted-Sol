@@ -1,0 +1,22 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  background: #1a1a2e;
+  color: rgba(255,255,255,0.7);
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}

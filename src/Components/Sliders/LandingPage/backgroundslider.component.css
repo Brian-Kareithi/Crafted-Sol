@@ -1,40 +1,95 @@
-.container-style{
-    height: 100%;
-    position: relative;
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
-.description{
-    width: 600px;
-    position: absolute;
-    z-index: 999;
-    color: aliceblue;
-    top: 20%;
-    left: 20%;
+
+.hero__bg {
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
-.description h1{
-    font-size: 46px;
+
+.hero__bg--loaded {
+  opacity: 1;
 }
-.description p{
-    font-size: 22px;
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(4, 9, 30, 0.75), rgba(4, 9, 30, 0.4));
 }
-.caurosel-bullet{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.hero__content {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 600px;
 }
-.caurosel-bullet span{
-    width: 45px;
-    height: 12px;
-    background-color: rgb(179,178,176);
-    margin-left: 10px;
-    border-radius: 2px;
-    cursor: pointer;
-    box-shadow: 3px 2px 2px rgba(73, 72, 72, 0.338);
+
+.hero__title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
-.transparent-background {
-    width: 100%;
-    height: 100vh;
-    z-index: 998;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
+
+.hero__desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__price {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffd700;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 24px;
+  border-radius: 30px;
+}
+
+.hero__bullets {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.hero__bullet {
+  width: 40px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero__bullet--active {
+  background: #fff;
+  width: 56px;
+}
+
+.hero__bullet:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    left: 5%;
+    right: 5%;
+  }
+  .hero__title {
+    font-size: 2rem;
+  }
+  .hero__desc {
+    font-size: 1rem;
+  }
 }

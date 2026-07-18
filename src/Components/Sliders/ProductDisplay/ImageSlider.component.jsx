@@ -1,125 +1,129 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import Skeleton from "../../Skeleton/skeleton.component";
 
-const slideStyles = {
-    width: "100%",
-    height: "100%",
-    borderRadius: "10px",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-};
+const ImageSlider = ({ slides, parentWidth, currentIndex, onIndexChange }) => {
+  const timerRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const [localIndex, setLocalIndex] = useState(0);
 
-const rightArrowStyles = {
-    position: "absolute",
-    top: "50%",
-    transform: "translate(0, -50%)",
-    right: "32px",
-    fontSize: "45px",
-    color: "#fff",
-    zIndex: 1,
-    cursor: "pointer",
-};
+  const activeIndex = currentIndex !== undefined ? currentIndex : localIndex;
+  const setActiveIndex = onIndexChange || setLocalIndex;
 
-const leftArrowStyles = {
-    position: "absolute",
-    top: "50%",
-    transform: "translate(0, -50%)",
-    left: "32px",
-    fontSize: "45px",
-    color: "#fff",
-    zIndex: 1,
-    cursor: "pointer",
-};
+  const goToNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % slides.length);
+  }, [slides.length, setActiveIndex]);
 
-const sliderStyles = {
-    position: "relative",
-    height: "100%",
-};
+  useEffect(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => goToNext(), 4000);
+    return () => clearTimeout(timerRef.current);
+  }, [goToNext]);
 
-const dotsContainerStyles = {
-    display: "flex",
-    justifyContent: "center",
-};
-
-const dotStyle = {
-    margin: "0 3px",
-    cursor: "pointer",
-    fontSize: "20px",
-};
-
-const slidesContainerStyles = {
-    display: "flex",
-    height: "100%",
-    transition: "transform ease-out 0.3s",
-};
-
-const slidesContainerOverflowStyles = {
-    overflow: "hidden",
-    height: "100%",
-};
-
-const ImageSlider = ({ slides, parentWidth }) => {
-    const timerRef = useRef(null);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const goToPrevious = () => {
-        const isFirstSlide = currentIndex === 0;
-        const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-        setCurrentIndex(newIndex);
-    };
-    const goToNext = useCallback(() => {
-        const isLastSlide = currentIndex === slides.length - 1;
-        const newIndex = isLastSlide ? 0 : currentIndex + 1;
-        setCurrentIndex(newIndex);
-    }, [currentIndex, slides]);
-    const goToSlide = (slideIndex) => {
-        setCurrentIndex(slideIndex);
-    };
-    const getSlideStylesWithBackground = (slideIndex) => ({
-        ...slideStyles,
-        backgroundImage: `url(${slides[slideIndex].url})`,
-        width: `${parentWidth}px`,
-    });
-    const getSlidesContainerStylesWithWidth = () => ({
-        ...slidesContainerStyles,
-        width: parentWidth * slides.length,
-        transform: `translateX(${-(currentIndex * parentWidth)}px)`,
-    });
-
-    useEffect(() => {
-        if (timerRef.current) {
-            clearTimeout(timerRef.current);
-        }
-        timerRef.current = setTimeout(() => {
-            goToNext();
-        }, 4000);
-
-        return () => clearTimeout(timerRef.current);
-    }, [goToNext]);
-
-    return (
-        <div style={sliderStyles}>
-            <div style={slidesContainerOverflowStyles}>
-                <div style={getSlidesContainerStylesWithWidth()}>
-                    {slides.map((_, slideIndex) => (
-                        <div
-                            key={slideIndex}
-                            style={getSlideStylesWithBackground(slideIndex)}
-                        ></div>
-                    ))}
-                </div>
-            </div>
-            <div style={dotsContainerStyles}>
-                {slides.map((slide, slideIndex) => (
-                    <div
-                        style={dotStyle}
-                        key={slideIndex}
-                        onClick={() => goToSlide(slideIndex)}
-                    >
-                        ●
-                    </div>
-                ))}
-            </div>
+  return (
+    <div style={{ position: "relative", height: "100%", width: "100%", background: "#f0f0f0", borderRadius: "16px" }}>
+      {!loaded && <Skeleton type="image" height="480px" />}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${slide.url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: i === activeIndex ? 1 : 0,
+            transition: "opacity 0.5s ease",
+            visibility: i === activeIndex ? "visible" : "hidden",
+          }}
+        >
+          <img
+            src={slide.url}
+            alt=""
+            style={{ display: "none" }}
+            onLoad={() => setLoaded(true)}
+          />
         </div>
-    );
+      ))}
+      <div
+        style={{
+          position: "absolute",
+          left: 16,
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.8)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 22,
+          fontWeight: 700,
+          color: "#333",
+          zIndex: 2,
+          transition: "background 0.25s",
+        }}
+        onClick={() => setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length)}
+        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.8)"}
+      >
+        &#8249;
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          right: 16,
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.8)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 22,
+          fontWeight: 700,
+          color: "#333",
+          zIndex: 2,
+          transition: "background 0.25s",
+        }}
+        onClick={goToNext}
+        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.8)"}
+      >
+        &#8250;
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 16,
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          gap: 8,
+          zIndex: 2,
+        }}
+      >
+        {slides.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: i === activeIndex ? 24 : 10,
+              height: 10,
+              borderRadius: 5,
+              background: i === activeIndex ? "#7085B6" : "rgba(255,255,255,0.6)",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onClick={() => setActiveIndex(i)}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ImageSlider;
