@@ -58,7 +58,7 @@ main {
   margin-top: 16px;
 }
 
-.footer__social a {
+.footer__social-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,11 +68,32 @@ main {
   background: rgba(255, 255, 255, 0.06);
   transition: all 0.25s ease;
   padding: 0;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.footer__social a:hover {
+.footer__social-btn:hover {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
+  color: #fff;
+}
+
+.footer__link-btn {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+  font-family: inherit;
+  text-align: left;
+}
+
+.footer__link-btn:hover {
+  color: #fff;
 }
 
 .footer__bottom {

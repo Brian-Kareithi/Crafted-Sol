@@ -31,21 +31,21 @@ function App() {
             <h4>Crafted Sol</h4>
             <p>Your destination for premium fashion. Quality meets style.</p>
             <div className="footer__social">
-              <a href="#" aria-label="Instagram">
+              <button className="footer__social-btn" aria-label="Instagram">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
-              </a>
-              <a href="#" aria-label="Twitter/X">
+              </button>
+              <button className="footer__social-btn" aria-label="Twitter/X">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M19.5 4l-6.768 6.768"/>
                 </svg>
-              </a>
-              <a href="#" aria-label="Facebook">
+              </button>
+              <button className="footer__social-btn" aria-label="Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
           <div className="footer__col">
@@ -57,10 +57,10 @@ function App() {
           </div>
           <div className="footer__col">
             <h4>Customer Care</h4>
-            <a href="#">Help Center</a>
-            <a href="#">Shipping Info</a>
-            <a href="#">Returns</a>
-            <a href="#">Contact Us</a>
+            <button className="footer__link-btn">Help Center</button>
+            <button className="footer__link-btn">Shipping Info</button>
+            <button className="footer__link-btn">Returns</button>
+            <button className="footer__link-btn">Contact Us</button>
           </div>
           <div className="footer__col">
             <h4>Contact</h4>
