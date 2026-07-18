@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Navbar from "./Components/Navbar/navbar.component";
 import Home from './Pages/Home';
@@ -50,10 +50,10 @@ function App() {
           </div>
           <div className="footer__col">
             <h4>Quick Links</h4>
-            <a href="/">Home</a>
-            <a href="/cart">Cart</a>
-            <a href="/wishlist">Wishlist</a>
-            <a href="/profile">Profile</a>
+            <Link to="/">Home</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="/wishlist">Wishlist</Link>
+            <Link to="/profile">Profile</Link>
           </div>
           <div className="footer__col">
             <h4>Customer Care</h4>

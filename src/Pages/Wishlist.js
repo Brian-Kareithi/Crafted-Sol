@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useApp } from "../Context/AppContext";
 import { useState, useEffect } from "react";
 import "./Pages.css";
@@ -29,6 +30,7 @@ const Wishlist = () => {
         </svg>
         <h2>Your wishlist is empty</h2>
         <p>Save items you love by tapping the heart icon.</p>
+        <Link to="/" className="page__btn">Browse Products</Link>
       </div>
     );
   }

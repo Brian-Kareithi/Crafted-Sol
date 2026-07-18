@@ -20,6 +20,23 @@
   margin-top: 8px;
 }
 
+.page__btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.25s;
+}
+
+.page__btn:hover {
+  background: #333;
+}
+
 .page__header {
   display: flex;
   align-items: center;

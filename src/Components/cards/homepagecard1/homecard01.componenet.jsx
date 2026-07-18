@@ -17,7 +17,7 @@ const responsive = {
 
 const Homecard01 = () => {
   return (
-    <section className="categories">
+    <section className="categories" id="categories">
       <div className="section-header">
         <h2>Shop by Category</h2>
         <p>Find exactly what you need</p>

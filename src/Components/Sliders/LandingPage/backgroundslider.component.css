@@ -6,63 +6,21 @@
   isolation: isolate;
 }
 
-.hero__slides {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.hero__slides--loaded {
-  opacity: 1;
-}
-
 .hero__slide {
-  position: absolute;
-  inset: 0;
-}
-
-.hero__image {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
-.hero__slide--enter-right {
-  animation: slideInRight 0.6s ease forwards;
+.hero__slide--ready {
+  transition: opacity 0.8s ease;
 }
 
-.hero__slide--enter-left {
-  animation: slideInLeft 0.6s ease forwards;
-}
-
-.hero__slide--exit-right {
-  animation: slideOutLeft 0.6s ease forwards;
-}
-
-.hero__slide--exit-left {
-  animation: slideOutRight 0.6s ease forwards;
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes slideInLeft {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes slideOutLeft {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@keyframes slideOutRight {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
+.hero__slide--active {
+  opacity: 1;
 }
 
 .hero__overlay {
@@ -116,12 +74,6 @@
   color: #fff;
   max-width: 620px;
   padding-right: 20px;
-  animation: heroContentIn 0.7s ease both;
-}
-
-@keyframes heroContentIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(-50%); }
 }
 
 .hero__title {

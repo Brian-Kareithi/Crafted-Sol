@@ -2,16 +2,15 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d5e 50%, #1a1a2e 100%);
+  background: #1a1a2e;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.5s ease;
 }
 
 .splash--hidden {
   opacity: 0;
-  transform: scale(1.05);
   pointer-events: none;
 }
 
@@ -19,7 +18,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 .splash__logo {
@@ -27,69 +26,66 @@
 }
 
 .splash__sun {
-  animation: splashGlow 2s ease-in-out infinite;
+  fill: #FFD700;
 }
 
 .splash__ray {
+  stroke: #FFD700;
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
   animation: splashRay 2s ease-in-out infinite;
 }
 
 .splash__title {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #fff;
   letter-spacing: 2px;
   opacity: 0;
-  animation: splashFadeUp 0.8s ease 0.3s forwards;
+  animation: splashFadeUp 0.6s ease 0.2s forwards;
 }
 
 .splash__sub {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
   opacity: 0;
-  animation: splashFadeUp 0.8s ease 0.5s forwards;
+  animation: splashFadeUp 0.6s ease 0.4s forwards;
 }
 
 .splash__loader {
-  width: 200px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
   overflow: hidden;
-  margin-top: 24px;
+  margin-top: 8px;
   opacity: 0;
-  animation: splashFadeUp 0.8s ease 0.7s forwards;
+  animation: splashFadeUp 0.6s ease 0.6s forwards;
 }
 
 .splash__bar {
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #FFD700, #7085B6);
-  border-radius: 4px;
-  animation: splashBar 1.8s ease-in-out infinite;
+  background: #FFD700;
+  border-radius: 2px;
+  animation: splashBar 1.6s ease-in-out infinite;
   transform-origin: left;
 }
 
 @keyframes splashPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-@keyframes splashGlow {
-  0%, 100% { fill: #FFD700; filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.3)); }
-  50% { fill: #FFE44D; filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)); }
+  50% { transform: scale(1.05); }
 }
 
 @keyframes splashRay {
-  0%, 100% { stroke-dashoffset: 30; opacity: 0.4; }
+  0%, 100% { stroke-dashoffset: 30; opacity: 0.3; }
   50% { stroke-dashoffset: 0; opacity: 1; }
 }
 
 @keyframes splashFadeUp {
   to { opacity: 1; transform: translateY(0); }
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
 }
 
 @keyframes splashBar {

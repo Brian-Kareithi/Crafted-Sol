@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useApp } from "../Context/AppContext";
 import "./Pages.css";
 
@@ -13,6 +14,7 @@ const Cart = () => {
         </svg>
         <h2>Your cart is empty</h2>
         <p>Looks like you haven't added anything yet.</p>
+        <Link to="/" className="page__btn">Browse Products</Link>
       </div>
     );
   }
